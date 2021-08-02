@@ -9,4 +9,5 @@
     <string name="label_color">Cor de fundo</string>
     <string name="label_btn_confirm">Confirmar</string>
     <string name="label_save_card_success">Cartão salvo com sucesso</string>
+    <string name="label_share_to">Compartilhar</string>
 </resources>

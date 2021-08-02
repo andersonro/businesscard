@@ -6,15 +6,11 @@ import kotlinx.coroutines.runBlocking
 
 class BusinessCardRepository(private val dao: BusinessCardDao) {
 
-    /*
-    fun insert(businessCard: BusinessCard) = runBlocking {
-        launch(Dispatchers.IO) {
-            dao.insert(businessCard)
-        }
-    }
-    */
+    fun insert(businessCard: BusinessCard) : Long = dao.insert(businessCard)
 
-    fun insertReturn(businessCard: BusinessCard) : Long = dao.insert(businessCard)
+    fun update(businessCard: BusinessCard) = dao.update(businessCard)
 
     fun getAll() = dao.getAll()
+
+    fun getBusinessCardById(id: Long) = dao.getByBusinessCardId(id)
 }

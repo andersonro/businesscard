@@ -1,13 +1,17 @@
 package br.com.arodevsistemas.businesscard.ui
 
 import android.content.Context
+import android.content.Intent
+
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.arodevsistemas.businesscard.data.BusinessCard
 import br.com.arodevsistemas.businesscard.databinding.ItemBusinessCardBinding
+import br.com.arodevsistemas.businesscard.ui.AddBusinessCardActivity.Companion.CARD_ID
 
 class BusinessCardAdapter (val context : Context) : RecyclerView.Adapter<BusinessCardAdapter.ViewHolder>() {
 
@@ -23,6 +27,13 @@ class BusinessCardAdapter (val context : Context) : RecyclerView.Adapter<Busines
             binding.mcvContent.setCardBackgroundColor(Color.parseColor(item.fundoColor.toString()))
             binding.mcvContent.setOnClickListener {
                 listenerShare(it)
+            }
+
+            binding.btnEdit.setOnClickListener {
+                Log.e("SELECT_ID", item.id.toString())
+                val intent = Intent(context, AddBusinessCardActivity::class.java)
+                intent.putExtra(CARD_ID, item.id)
+                context.startActivity(intent)
             }
         }
     }

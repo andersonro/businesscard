@@ -54,6 +54,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
 
+    //Android Color Picker
+    //https://github.com/novatien/SmartColorPicker
+    //https://www.youtube.com/watch?v=kMW0XX2oEVA
+    implementation 'com.github.novatien:SmartColorPicker:1.0.2'
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

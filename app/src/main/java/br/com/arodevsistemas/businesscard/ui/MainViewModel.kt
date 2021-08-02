@@ -9,11 +9,15 @@ import java.lang.IllegalArgumentException
 
 class MainViewModel(private val businessCardRepository: BusinessCardRepository): ViewModel() {
 
-    fun insert(businessCard: BusinessCard)  = businessCardRepository.insertReturn(businessCard)
+    fun insert(businessCard: BusinessCard)  = businessCardRepository.insert(businessCard)
+
+    fun update(businessCard: BusinessCard)  = businessCardRepository.update(businessCard)
 
     fun getAll() : LiveData<List<BusinessCard>> {
         return  businessCardRepository.getAll()
     }
+
+    fun getBusinessCard(id: Long) : BusinessCard = businessCardRepository.getBusinessCardById(id)
 }
 
 class MainViewModelFactory(private val repository: BusinessCardRepository) : ViewModelProvider.Factory{

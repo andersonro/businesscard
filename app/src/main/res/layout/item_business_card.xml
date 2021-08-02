@@ -64,6 +64,15 @@
                 android:layout_marginTop="8dp"
                 tools:text="Nome da empresa" />
 
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="?attr/actionBarItemBackground"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
