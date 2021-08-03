@@ -8,7 +8,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import br.com.arodevsistemas.businesscard.R
 import br.com.arodevsistemas.businesscard.data.BusinessCard
 import br.com.arodevsistemas.businesscard.databinding.ItemBusinessCardBinding
 import br.com.arodevsistemas.businesscard.ui.AddBusinessCardActivity.Companion.CARD_ID
@@ -17,24 +21,34 @@ class BusinessCardAdapter (val context : Context) : RecyclerView.Adapter<Busines
 
     var list : List<BusinessCard> = emptyList()
     var listenerShare: (View) -> Unit = {}
+    var listenerEdit: (View) -> Unit = {}
 
     inner class ViewHolder(private val binding: ItemBusinessCardBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item : BusinessCard){
             binding.tvName.text = item.nome
+            binding.tvName.setTextColor(Color.parseColor(item.fonteColor.toString()))
+
             binding.tvTelefone.text = item.telefone
+            binding.tvTelefone.setTextColor(Color.parseColor(item.fonteColor.toString()))
+
             binding.tvEmail.text = item.email
+            binding.tvEmail.setTextColor(Color.parseColor(item.fonteColor.toString()))
+
             binding.tvEmpresa.text = item.empresa
+            binding.tvEmpresa.setTextColor(Color.parseColor(item.fonteColor.toString()))
+
             binding.mcvContent.setCardBackgroundColor(Color.parseColor(item.fundoColor.toString()))
+
             binding.mcvContent.setOnClickListener {
                 listenerShare(it)
             }
 
             binding.btnEdit.setOnClickListener {
-                Log.e("SELECT_ID", item.id.toString())
                 val intent = Intent(context, AddBusinessCardActivity::class.java)
                 intent.putExtra(CARD_ID, item.id)
                 context.startActivity(intent)
             }
+
         }
     }
 

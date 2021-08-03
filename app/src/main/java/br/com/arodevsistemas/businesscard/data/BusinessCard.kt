@@ -12,5 +12,6 @@ data class BusinessCard(
     var empresa: String = "",
     var telefone: String = "",
     var email: String = "",
-    @ColumnInfo(name = "fundo_color") var fundoColor: String = ""
+    @ColumnInfo(name = "fundo_color") var fundoColor: String = "",
+    @ColumnInfo(name = "fonte_color") var fonteColor: String = "#000000",
 ) : Serializable

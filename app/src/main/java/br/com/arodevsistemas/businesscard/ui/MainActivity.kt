@@ -3,9 +3,13 @@ package br.com.arodevsistemas.businesscard.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageButton
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import br.com.arodevsistemas.businesscard.App
+import br.com.arodevsistemas.businesscard.R
 import br.com.arodevsistemas.businesscard.databinding.ActivityMainBinding
 import br.com.arodevsistemas.businesscard.util.Image
 
@@ -34,7 +38,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter.listenerShare = { card->
+            card.findViewById<ImageButton>(R.id.btn_edit).isVisible = false
             Image.share(this, card)
+            card.findViewById<ImageButton>(R.id.btn_edit).isVisible = true
         }
     }
 

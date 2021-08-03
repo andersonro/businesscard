@@ -5,14 +5,17 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.FileProvider.getUriForFile
+import androidx.core.view.isVisible
 import br.com.arodevsistemas.businesscard.R
 import java.io.File
 import java.io.FileOutputStream
@@ -38,6 +41,7 @@ class Image {
                         Bitmap.Config.ARGB_8888
                     )
                 val canvas = Canvas(screenshot)
+                canvas.drawColor(Color.TRANSPARENT)
                 view.draw(canvas)
             } catch (e: Exception) {
                 Log.e("ERRo->", "Failed to capture screenshot because:" + e.message)
@@ -46,7 +50,7 @@ class Image {
         }
 
         private fun saveMediaToStorage(context: Context, bitmap: Bitmap) {
-            val filename = "${System.currentTimeMillis()}.jpg"
+            val filename = "${System.currentTimeMillis()}.png"
 
             var fos: OutputStream? = null
 
@@ -54,7 +58,7 @@ class Image {
                 context.contentResolver?.also { resolver ->
                     val contentValues = ContentValues().apply {
                         put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
-                        put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                        put(MediaStore.MediaColumns.MIME_TYPE, "image/png")
                         put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
                     }
                     val imageUri: Uri? =
@@ -74,7 +78,7 @@ class Image {
             }
 
             fos?.use {
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)
                 Toast.makeText(context, "Imagem capturada com sucesso", Toast.LENGTH_SHORT).show()
             }
         }
@@ -83,7 +87,7 @@ class Image {
             val shareIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
                 putExtra(Intent.EXTRA_STREAM, image)
-                type = "image/jpeg"
+                type = "image/png"
             }
             context.startActivity(
                 Intent.createChooser(

@@ -117,14 +117,15 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textCapCharacters" />
+                android:inputType="none"
+                android:focusable="false"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
             android:id="@+id/btn_colors"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/ic_color"
             android:layout_marginRight="16dp"
             app:layout_constraintTop_toTopOf="@+id/til_color"
@@ -133,15 +134,46 @@
             app:layout_constraintBottom_toBottomOf="@+id/til_color"
             />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_color_font"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_margin="16dp"
+            android:hint="@string/label_color_font"
+            app:layout_constraintEnd_toStartOf="@id/btn_colors_font"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:focusable="false"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btn_colors_font"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_color"
+            android:layout_marginRight="16dp"
+            app:layout_constraintTop_toTopOf="@+id/til_color_font"
+            app:layout_constraintStart_toEndOf="@+id/til_color_font"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/til_color_font"
+            />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_card_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/label_btn_confirm"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="@id/til_color"
-            app:layout_constraintEnd_toEndOf="@id/til_color"
-            app:layout_constraintTop_toBottomOf="@+id/til_color"
+            android:layout_margin="16dp"
+            app:layout_constraintStart_toStartOf="@id/til_color_font"
+            app:layout_constraintEnd_toEndOf="@id/til_color_font"
+            app:layout_constraintTop_toBottomOf="@+id/til_color_font"
 
             />
 
